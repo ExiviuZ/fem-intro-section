@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Frontend Mentor | Intro section with dropdown navigation</title>
+  </head>
+  <body>
+    <div class="whole-wrapper">
+      <header class="header">
+        <nav class="header__nav">
+          <a href="#"
+            ><img class="header__logo" src="images/logo.svg" alt=""
+          /></a>
+          <div class="header__links-wrapper">
+            <ul class="header__links">
+              <li class="header__links-item arrow">
+                Features
+                <ul class="header__item-parent first">
+                  <li>
+                    <a href=""
+                      ><img src="images/icon-todo.svg" alt="" />
+                      <span>Todo List</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href=""
+                      ><img src="images/icon-calendar.svg" alt="" />
+                      <span>Calendar</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href=""
+                      ><img src="images/icon-reminders.svg" alt="" />
+                      <span>Reminders</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href=""
+                      ><img src="images/icon-planning.svg" alt="" />
+                      <span>Planning</span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="header__links-item arrow">
+                Company
+                <ul class="header__item-parent second">
+                  <li>
+                    <a href=""><span>History</span></a>
+                  </li>
+                  <li>
+                    <a href=""><span>Our Team</span></a>
+                  </li>
+                  <li>
+                    <a href=""><span>Blog</span></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="header__links-item"><a href="">Careers</a></li>
+              <li class="header__links-item"><a href="">About</a></li>
+            </ul>
+
+            <ul class="header__account">
+              <li class="header__links-item"><a href="">Login</a></li>
+              <li class="header__links-item"><a href="">Register</a></li>
+            </ul>
+          </div>
+          <div class="header__burger-container">
+            <img
+              src="images/icon-menu.svg"
+              class="header__burger open"
+              alt=""
+            />
+            <img
+              src="images/icon-close-menu.svg"
+              class="header__burger close"
+              alt=""
+            />
+          </div>
+        </nav>
+      </header>
+
+      <main class="main">
+        <section class="main__info">
+          <h1 class="main__heading"><span>Make</span> remote work</h1>
+          <p class="main__description">
+            Get your team in sync, no matter your location. Streamline
+            processes, create team rituals, and watch productivity soar.
+          </p>
+          <a href="" class="main__button">Learn More</a>
+          <div class="main__client-container">
+            <div>
+              <img
+                class="main__client-image"
+                src="images/client-databiz.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                class="main__client-image"
+                src="images/client-audiophile.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                class="main__client-image"
+                src="images/client-meet.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                class="main__client-image"
+                src="images/client-maker.svg"
+                alt=""
+              />
+            </div>
+          </div>
+        </section>
+        <div class="main__hero-container">
+          <img
+            class="main__hero-desktop main__hero"
+            src="images/image-hero-desktop.png"
+            alt=""
+          />
+          <img
+            class="main__hero-mobile main__hero"
+            src="images/image-hero-mobile.png"
+            alt=""
+          />
+        </div>
+      </main>
+    </div>
+    <script>
+      const liDropdown = document.querySelectorAll(
+        ".header__links-item:nth-child(1).arrow,.header__links-item:nth-child(2).arrow"
+      );
+
+      for (let dropdown of liDropdown) {
+      }
+
+      liDropdown.forEach((dropdown, index) => {
+        dropdown.addEventListener("click", () => {
+          let currentlyActive = index;
+          dropdown.classList.toggle("active");
+          const ulParent = dropdown.querySelector(".header__item-parent");
+          liDropdown.forEach((dropdown, index) => {
+            if (index != currentlyActive) {
+              dropdown.classList.remove("active");
+            }
+          });
+          ulParent.addEventListener("click", (e) => {
+            e.stopPropagation();
+          });
+        });
+      });
+
+      const burgerContainer = document.querySelector(
+        ".header__burger-container"
+      );
+      const burgerOpen = document.querySelector(".header__burger.open");
+      const burgerClose = document.querySelector(".header__burger.close");
+      const linksWrapper = document.querySelector(".header__links-wrapper");
+
+      burgerContainer.addEventListener("click", (e) => {
+        burgerContainer.classList.toggle("active");
+        linksWrapper.classList.toggle("active");
+        burgerOpen.classList.toggle("trigger");
+        burgerClose.classList.toggle("trigger");
+      });
+    </script>
+  </body>
+</html>
